@@ -41,8 +41,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:include filename="$(find husky_ur3_gazebo)/urdf/accessories/sensor_arch.urdf.xacro"/>
   <xacro:include filename="$(find husky_ur3_gazebo)/urdf/accessories/sick_tim571.urdf.xacro"/>
   <xacro:include filename="$(find husky_ur3_gazebo)/urdf/ur3_robot_gripper.urdf.xacro"/>
-  <xacro:include filename="$(find husky_ur3_gazebo)/urdf/accessories/d435_camera_h.urdf.xacro"/>-
-  <xacro:include filename="$(find husky_ur3_gazebo)/urdf/accessories/d435_camera_g.urdf.xacro"/>-
+  <xacro:include filename="$(find husky_ur3_gazebo)/urdf/accessories/d435_camera_h.urdf.xacro"/>
+  <!--xacro:include filename="$(find husky_ur3_gazebo)/urdf/accessories/d435_camera_g.urdf.xacro"/-->
   <!--xacro:include filename="$(find husky_ur3_gazebo)/urdf/ur3_robot.urdf.xacro"/-->
 
 
@@ -75,16 +75,16 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
         <mesh filename="package://husky_ur3_gazebo/meshes/base_link.dae" />
       </geometry>
     </visual>
-    <collision>
+    <collision name = "base_collision1">
       <origin xyz="${( husky_front_bumper_extend - husky_rear_bumper_extend ) / 2.0} 0 ${base_z_size/4}" rpy="0 0 0" />
       <geometry>
-        <box size="${ base_x_size + husky_front_bumper_extend + husky_rear_bumper_extend } ${base_y_size} ${base_z_size/2}"/>
+        <box size="${ base_x_size + husky_front_bumper_extend + husky_rear_bumper_extend } ${base_y_size + 0.12} ${base_z_size/2}"/>
       </geometry>
     </collision>
-    <collision>
+    <collision name = "base_collision2">
       <origin xyz="0 0 ${base_z_size*3/4-0.01}" rpy="0 0 0" />
       <geometry>
-        <box size="${base_x_size*4/5} ${base_y_size} ${base_z_size/2-0.02}"/>
+        <box size="${base_x_size*4/5} ${base_y_size + 0.12} ${base_z_size/2-0.02}"/>
       </geometry>
     </collision>
   </link>
@@ -178,12 +178,10 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:husky_decorate />
     
 
-
-  <xacro:sensor_sick_tim571 prefix="front_laser" parent="top_plate_link" prefix_topic="front_laser">
+  <xacro:sensor_sick_tim571 prefix="front_laser" parent="top_plate_link" topic="scan">
    	<origin xyz="$(arg laser_xyz)" rpy="$(arg laser_rpy)"/>
   </xacro:sensor_sick_tim571>
 
-	
 
  <joint name="control_box_ur3_joint" type="fixed">
       <origin xyz="-0.095 0 0.233" rpy="${M_PI/2} 0 0" />
@@ -258,6 +256,71 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       <drift>0.0001 0.0001 0.0001</drift>
     </plugin>
   </gazebo>
+
+  <gazebo>
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>50.0</updateRate>
+      <bodyName>base_footprint</bodyName>
+      <topicName>base_pose_ground_truth</topicName>
+      <gaussianNoise>0.01</gaussianNoise>
+      <frameName>map</frameName>
+      <xyzOffsets>0 0 0</xyzOffsets>
+      <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+  </gazebo>
+  
+  <gazebo reference="base_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__base_collision1_collision</collision>
+         </contact>
+         <plugin name="my_plugin" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>base_link</frameName>
+         </plugin>
+      </sensor>
+   </gazebo>
+
+   <gazebo reference="base_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor2' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__base_collision2_collision_1</collision>
+         </contact>
+         <plugin name="my_plugin2" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>base_link</frameName>
+         </plugin>
+      </sensor>
+   </gazebo>
+
+    <gazebo reference="rear_bumper_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor3' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__rear_bumper_collision_collision_3</collision>
+         </contact>
+         <plugin name="my_plugin3" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>base_link</frameName>
+         </plugin>
+      </sensor>
+   </gazebo>
+
+    <gazebo reference="front_bumper_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor4' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__front_bumper_collision_collision_2</collision>
+         </contact>
+         <plugin name="my_plugin4" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>base_link</frameName>
+         </plugin>
+      </sensor>
+   </gazebo>
 
   <!-- Optional custom includes. -->
   <xacro:include filename="$(arg urdf_extras)" />

@@ -27,8 +27,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
   <xacro:macro name="husky_decorate">
 
-    <xacro:property name="husky_front_bumper_extend" value="$(optenv HUSKY_FRONT_BUMPER_EXTEND 0)" />
-    <xacro:property name="husky_rear_bumper_extend" value="$(optenv HUSKY_REAR_BUMPER_EXTEND 0)" />
+    <xacro:property name="husky_front_bumper_extend" value="$(optenv HUSKY_FRONT_BUMPER_EXTEND 0.01)" />
+    <xacro:property name="husky_rear_bumper_extend" value="$(optenv HUSKY_REAR_BUMPER_EXTEND 0.01)" />
 
     <!-- Spawn Husky chassis -->
     <link name="top_chassis_link">
@@ -71,6 +71,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
           <mesh filename="package://husky_ur3_gazebo/meshes/bumper.dae" />
         </geometry>
       </visual>
+
+      <collision name="front_bumper_collision">
+        <geometry>
+          <mesh filename="package://husky_ur3_gazebo/meshes/bumper.dae" />
+        </geometry>
+      </collision>
     </link>
 
     <!-- Attach front bumper -->
@@ -103,6 +109,13 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
           <mesh filename="package://husky_ur3_gazebo/meshes/bumper.dae" />
         </geometry>
       </visual>
+
+      <collision name="rear_bumper_collision">
+        <geometry>
+          <mesh filename="package://husky_ur3_gazebo/meshes/bumper.dae" />
+        </geometry>
+      </collision>
+
     </link>
 
     <!-- Attach rear bumper -->

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 	
-  <xacro:macro name="sensor_sick_tim571" params="prefix parent prefix_topic:='front_laser' *origin min_angle:=-1.57619449019 max_angle:=1.57619449019">
+  <xacro:macro name="sensor_sick_tim571" params="prefix parent topic *origin min_angle:=-1.57619449019 max_angle:=1.57619449019">
      
     <joint name="${prefix}_base_joint" type="fixed">
       <xacro:insert_block name="origin" />
@@ -77,7 +77,7 @@
 					</noise>
 				</ray>
 				<plugin name="${prefix}_controller" filename="libgazebo_ros_laser.so">
-					<topicName>/scan</topicName>
+					<topicName>${topic}</topicName>
 					<frameName>/${prefix}_link</frameName>
 				</plugin>
 			</sensor>
