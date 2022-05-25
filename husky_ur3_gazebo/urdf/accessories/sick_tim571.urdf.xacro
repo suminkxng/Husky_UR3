@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 	
-  <xacro:macro name="sensor_sick_tim571" params="prefix parent topic *origin min_angle:=-1.57619449019 max_angle:=1.57619449019">
+  <xacro:macro name="sensor_sick_tim571" params="prefix parent topic *origin min_angle:=-1.757025 max_angle:=1.756554">
      
     <joint name="${prefix}_base_joint" type="fixed">
       <xacro:insert_block name="origin" />
@@ -59,7 +59,7 @@
 				<ray>
 					<scan>
 						<horizontal>
-							<samples>716</samples>
+							<samples>542</samples>
 							<resolution>1</resolution>
 							<min_angle>${min_angle}</min_angle>
 							<max_angle>${max_angle}</max_angle>
