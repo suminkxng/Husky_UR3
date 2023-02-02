@@ -5,7 +5,7 @@
   <arg name="laser_enabled" default="true"/>
   <arg name="camera_h_enabled" default="true"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find husky_ur3_gazebo)/worlds/khu_5th_corridor.world"/>
+    <arg name="world_name" value="$(find husky_ur3_gazebo)/worlds/pedsim_rl.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

@@ -212,12 +212,69 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     </collision>     
   </link>
 
+ <!-- <joint name="control_box_ur3_joint2" type="fixed">
+      <origin xyz="-0.095 -0.36 0.233" rpy="${M_PI/2} 0 0" />
+      <parent link="top_plate_link"/>
+      <child link="control_box_ur3_link2" />
+    </joint>   
+  
+  <link name="control_box_ur3_link2">
+    <inertial>
+      <mass value="5.0" />
+      <origin xyz="0 0 0" />
+      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+    </inertial>
+
+    <visual>
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 0.85"/>
+       </geometry>
+       <material name="gray">
+         <color rgba="0.153 0.153 0.153 1"/>
+       </material>
+    </visual>  
+    <collision>
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 0.85"/>
+       </geometry>
+    </collision>     
+  </link>
+
+ <joint name="control_box_ur3_joint3" type="fixed">
+      <origin xyz="-0.095 0.36 0.233" rpy="${M_PI/2} 0 0" />
+      <parent link="top_plate_link"/>
+      <child link="control_box_ur3_link3" />
+    </joint>   
+  
+  <link name="control_box_ur3_link3">
+    <inertial>
+      <mass value="5.0" />
+      <origin xyz="0 0 0" />
+      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+    </inertial>
+
+    <visual>
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 0.85"/>
+       </geometry>
+       <material name="gray">
+         <color rgba="0.153 0.153 0.153 1"/>
+       </material>
+    </visual>  
+    <collision>
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 0.85"/>
+       </geometry>
+    </collision>     
+  </link> -->
 
   <gazebo reference="control_box_ur3_link">
     <material>Gazebo/DarkGrey</material>
   </gazebo>
-
-
 
 
   <gazebo>
@@ -272,55 +329,132 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   
   <gazebo reference="base_link">
       <!-- Virtual Contact Sensor -->
-      <sensor name='base_contact_sensor' type='contact'>
-         <contact>
-             <collision>base_link_fixed_joint_lump__base_collision1_collision</collision>
-         </contact>
-         <plugin name="my_plugin" filename="libgazebo_ros_bumper.so">
-            <bumperTopicName>husky_collision</bumperTopicName>
-            <frameName>base_link</frameName>
-         </plugin>
-      </sensor>
-   </gazebo>
-
-   <gazebo reference="base_link">
-      <!-- Virtual Contact Sensor -->
-      <sensor name='base_contact_sensor2' type='contact'>
-         <contact>
-             <collision>base_link_fixed_joint_lump__base_collision2_collision_1</collision>
-         </contact>
-         <plugin name="my_plugin2" filename="libgazebo_ros_bumper.so">
-            <bumperTopicName>husky_collision</bumperTopicName>
-            <frameName>base_link</frameName>
-         </plugin>
-      </sensor>
-   </gazebo>
-
-    <gazebo reference="rear_bumper_link">
-      <!-- Virtual Contact Sensor -->
       <sensor name='base_contact_sensor3' type='contact'>
          <contact>
-             <collision>base_link_fixed_joint_lump__rear_bumper_collision_collision_3</collision>
+             <collision>base_link_fixed_joint_lump__base_collision1_collision</collision>
          </contact>
          <plugin name="my_plugin3" filename="libgazebo_ros_bumper.so">
             <bumperTopicName>husky_collision</bumperTopicName>
             <frameName>base_link</frameName>
          </plugin>
+         <update_rate>5</update_rate>
       </sensor>
    </gazebo>
 
-    <gazebo reference="front_bumper_link">
+   <gazebo reference="base_link">
       <!-- Virtual Contact Sensor -->
       <sensor name='base_contact_sensor4' type='contact'>
          <contact>
-             <collision>base_link_fixed_joint_lump__front_bumper_collision_collision_2</collision>
+             <collision>base_link_fixed_joint_lump__base_collision2_collision_1</collision>
          </contact>
          <plugin name="my_plugin4" filename="libgazebo_ros_bumper.so">
             <bumperTopicName>husky_collision</bumperTopicName>
             <frameName>base_link</frameName>
          </plugin>
+         <update_rate>5</update_rate>
       </sensor>
    </gazebo>
+
+    <gazebo reference="front_bumper_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__front_bumper_collision_collision_2</collision>
+         </contact>
+         <plugin name="my_plugin" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>base_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+   </gazebo>
+
+    <gazebo reference="rear_bumper_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor2' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__rear_bumper_collision_collision_5</collision>
+         </contact>
+         <plugin name="my_plugin2" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>base_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+   </gazebo>
+
+<!--ADD-->
+
+  <gazebo reference="side_bumper_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='control_box_contact_sensor' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__side_bumper_link_collision_12</collision>
+         </contact>
+         <plugin name="my_plugin5" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>top_plate_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+  </gazebo>
+
+  <gazebo reference="side_bumper_link2">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='control_box_contact_sensor2' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__side_bumper_link2_collision_13</collision>
+         </contact>
+         <plugin name="my_plugin6" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>top_plate_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+  </gazebo>
+
+<!--ADD 2-->
+  <gazebo reference="another_bumper_link">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor5' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__another_bumper_link_collision_3</collision>
+         </contact>
+         <plugin name="my_plugin7" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>front_bumper_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+  </gazebo>
+
+  <gazebo reference="another_bumper_link2">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor6' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__another_bumper_link2_collision_6</collision>
+         </contact>
+         <plugin name="my_plugin8" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>rear_bumper_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+  </gazebo>
+
+  <gazebo reference="another_bumper_link3">
+      <!-- Virtual Contact Sensor -->
+      <sensor name='base_contact_sensor7' type='contact'>
+         <contact>
+             <collision>base_link_fixed_joint_lump__another_bumper_link3_collision_4</collision>
+         </contact>
+         <plugin name="my_plugin8" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>husky_collision</bumperTopicName>
+            <frameName>front_bumper_link</frameName>
+         </plugin>
+         <update_rate>5</update_rate>
+      </sensor>
+  </gazebo>
 
   <!-- Optional custom includes. -->
   <xacro:include filename="$(arg urdf_extras)" />

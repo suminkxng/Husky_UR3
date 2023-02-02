@@ -704,4 +704,3 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
        additional URDF, set the HUSKY_URDF_EXTRAS environment variable
        to the full path of the file you would like included. -->
 </robot>
-

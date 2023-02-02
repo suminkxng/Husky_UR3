@@ -216,6 +216,160 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       <link name="top_plate_rear_link"/>
     </xacro:if>
 
+ <joint name="side_bumper_joint" type="fixed">
+      <origin xyz="-0.2 -0.6 0.085" rpy="${M_PI/2} 0 0" />
+      <parent link="top_plate_link"/>
+      <child link="side_bumper_link" />
+    </joint>   
+  
+  <link name="side_bumper_link">
+    <inertial>
+      <mass value="5.0" />
+      <origin xyz="0 0 0" />
+      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+    </inertial>
+
+    <!-- <visual>
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 0.83"/>
+       </geometry>
+       <material name="gray">
+         <color rgba="0.153 0.153 0.153 1"/>
+       </material>
+    </visual>   -->
+    <collision name="side_bumper_link">
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 1.0"/>
+       </geometry>
+    </collision>     
+  </link>
+
+
+ <joint name="side_bumper_joint2" type="fixed">
+      <origin xyz="-0.2 0.6 0.085" rpy="${M_PI/2} 0 0" />
+      <parent link="top_plate_link"/>
+      <child link="side_bumper_link2" />
+    </joint>   
+  
+  <link name="side_bumper_link2">
+    <inertial>
+      <mass value="5.0" />
+      <origin xyz="0 0 0" />
+      <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+    </inertial>
+
+    <!-- <visual>
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 0.83"/>
+       </geometry>
+       <material name="gray">
+         <color rgba="0.153 0.153 0.153 1"/>
+       </material>
+    </visual>   -->
+    <collision name="side_bumper_link2">
+       <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+       <geometry>
+           <box size="0.003 0.8 1.0"/>
+       </geometry>
+    </collision>     
+  </link>
+
+
+    <!-- add more bumper collision -->
+
+  <joint name="another_bumper_joint" type="fixed">
+        <origin xyz="0.09 0 -0.05" rpy="0 0 0" />
+        <parent link="front_bumper_link"/>
+        <child link="another_bumper_link" />
+  </joint>   
+      
+    <link name="another_bumper_link">
+      <inertial>
+        <mass value="5.0" />
+        <origin xyz="0 0 0" />
+        <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+      </inertial>
+
+      <!-- <visual>
+        <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+        <geometry>
+            <box size="0.05 0.7 0.005"/>
+        </geometry>
+        <material name="gray">
+          <color rgba="0.153 0.153 0.153 1"/>
+        </material>
+      </visual>   -->
+      <collision name="another_bumper_link">
+        <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+        <geometry>
+            <box size="0.25 1.0 0.003"/>
+        </geometry>
+      </collision>     
+    </link>
+
+  <joint name="another_bumper_joint2" type="fixed">
+    <origin xyz="0.09 0 0.30" rpy="0 0 0" />
+    <parent link="rear_bumper_link"/>
+    <child link="another_bumper_link2" />
+  </joint>   
+
+    <link name="another_bumper_link2">
+      <inertial>
+        <mass value="5.0" />
+        <origin xyz="0 0 0" />
+        <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+      </inertial>
+
+      <!-- <visual>
+        <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+        <geometry>
+            <box size="0.05 0.7 0.005"/>
+        </geometry>
+        <material name="gray">
+          <color rgba="0.153 0.153 0.153 1"/>
+        </material>
+      </visual>   -->
+      <collision name="another_bumper_link2">
+        <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+        <geometry>
+            <box size="1.0 1.0 0.003"/>
+        </geometry>
+      </collision>     
+    </link>
+
+  <joint name="another_bumper_joint3" type="fixed">
+    <origin xyz="0.09 0 0.5" rpy="0 0 0" />
+    <parent link="front_bumper_link"/>
+    <child link="another_bumper_link3" />
+  </joint>   
+
+    <link name="another_bumper_link3">
+      <inertial>
+        <mass value="5.0" />
+        <origin xyz="0 0 0" />
+        <inertia  ixx="0.0" ixy="0.0"  ixz="0.0"  iyy="0.0"  iyz="0.0"  izz="0.0" />
+      </inertial>
+
+      <!-- <visual>
+        <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+        <geometry>
+            <box size="0.05 0.7 0.005"/>
+        </geometry>
+        <material name="gray">
+          <color rgba="0.153 0.153 0.153 1"/>
+        </material>
+      </visual>   -->
+      <collision name="another_bumper_link3">
+        <origin xyz="0 0 0" rpy="0 -${M_PI/2} 0 " />
+        <geometry>
+            <box size="0.6 1.0 0.003"/>
+        </geometry>
+      </collision>     
+    </link>
+
     <!--D435 mount frame -->
     <!--<link name="mount_link">
         <visual>
@@ -243,6 +397,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <xacro:h_sensor_d435 parent="top_plate_link">
         <origin xyz="0.4 0.0 0.06" rpy="0 0 0"/>
     </xacro:h_sensor_d435>
+
 
 
     

@@ -1,0 +1,59 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/sumin/robogym_ws/devel_isolated/gazebo_model_collision_plugin/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/leg_tracker/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/leg_detector/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/face_detector/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/people_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/spencer_vision_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/spencer_tracking_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/spencer_social_relation_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/spencer_human_attribute_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/sdc21x0/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/pedsim_visualizer/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/pedsim_simulator/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/pedsim_srvs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/pedsim_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/panda_sim_custom_action_server/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/mir_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/mir_actions/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/franka_ros_controllers/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/franka_core_msgs/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/ar_track_alvar/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/ar_track_alvar_msgs/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/sumin/robogym_ws/devel_isolated/orocos_kdl/include/**",
+        "/home/sumin/robogym_ws/src/ar_track_alvar/ar_track_alvar/include/**",
+        "/home/sumin/robogym_ws/src/people/face_detector/include/**",
+        "/home/sumin/robogym_ws/src/franka_ros_interface/franka_interface/include/**",
+        "/home/sumin/robogym_ws/src/franka_ros_interface/franka_ros_controllers/include/**",
+        "/home/sumin/robogym_ws/src/people/leg_detector/include/**",
+        "/home/sumin/robogym_ws/src/leg_tracker/include/**",
+        "/home/sumin/robogym_ws/src/mir_robot/mir_dwb_critics/include/**",
+        "/home/sumin/robogym_ws/src/panda_simulator/panda_gazebo/include/**",
+        "/home/sumin/robogym_ws/src/panda_simulator/panda_hardware_interface/include/**",
+        "/home/sumin/robogym_ws/src/panda_simulator/panda_sim_controllers/include/**",
+        "/home/sumin/robogym_ws/src/pedsim_with_robot/pedsim_ros/3rdparty/libpedsim/include/**",
+        "/home/sumin/robogym_ws/src/pedsim_with_robot/pedsim_ros/pedsim_sensors/include/**",
+        "/home/sumin/robogym_ws/src/pedsim_with_robot/pedsim_ros/pedsim_simulator/include/**",
+        "/home/sumin/robogym_ws/src/pedsim_with_robot/pedsim_ros/pedsim_utils/include/**",
+        "/home/sumin/robogym_ws/src/pedsim_with_robot/pedsim_ros/pedsim_visualizer/include/**",
+        "/home/sumin/robogym_ws/src/people/people_tracking_filter/include/**",
+        "/home/sumin/robogym_ws/src/universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
